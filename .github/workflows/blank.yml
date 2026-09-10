@@ -12,7 +12,7 @@ jobs:
 
       - name: Build bottle
         run: |
-          brew install --build-bottle ./Formula/your-formula.rb
+          brew install --build-bottle rust
           brew bottle ./Formula/your-formula.rb
 
       - name: Upload bottle
