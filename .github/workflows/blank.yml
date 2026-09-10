@@ -1,0 +1,22 @@
+name: Build Homebrew bottle
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bottle:
+    runs-on: macos-15-intel
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build bottle
+        run: |
+          brew install --build-bottle ./Formula/your-formula.rb
+          brew bottle ./Formula/your-formula.rb
+
+      - name: Upload bottle
+        uses: actions/upload-artifact@v4
+        with:
+          name: homebrew-bottle
+          path: "*.tar.gz"
